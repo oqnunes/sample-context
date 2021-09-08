@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+
+import { useContext, useEffect } from 'react';
+import { UserContext } from './hooks/contexts/UserContex';
+import BoxInputs from './components/BoxInputs';
+
 import './App.css';
+import BoxDisplay from './components/BoxDisplay';
 
 function App() {
+
+  const { userGlobalState } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log({
+      userGlobalState: userGlobalState
+    })
+  }, [userGlobalState]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BoxInputs />  
+      <BoxDisplay />
     </div>
   );
 }
